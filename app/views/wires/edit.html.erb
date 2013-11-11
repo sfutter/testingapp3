@@ -1,0 +1,29 @@
+<h1>Editing wire</h1>
+ 
+<%= form_for :wire, url: wire_path(@wire), method: :patch do |f| %>
+  <% if @wire.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@wire.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <ul>
+    <% @wire.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :frequency %><br>
+    <%= f.text_field :frequency %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+ 
+<%= link_to 'Back', wires_path %>

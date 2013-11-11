@@ -1,0 +1,24 @@
+<h1>Listing Wires</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Frequency</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+  <%= @wires.each do |wire| %>
+    <tr>
+      <td><%= wire.title %></td>
+      <td><%= wire.frequency %></td>
+      <td><%= link_to 'Show', wire %></td>
+      <td><%= link_to 'Edit', edit_wire_path(wire) %></td>
+      <td><%= link_to 'Destroy', wire_path(wire),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New wire', new_wire_path %> 
