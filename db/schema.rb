@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111043919) do
+ActiveRecord::Schema.define(version: 20131111051957) do
 
   create_table "interests", force: true do |t|
     t.string   "topic"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20131111043919) do
   end
 
   add_index "interests", ["wire_id"], name: "index_interests_on_wire_id"
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "login"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "wires", force: true do |t|
     t.string   "title"

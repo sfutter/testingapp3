@@ -1,4 +1,6 @@
 Twominbreak::Application.routes.draw do
+  resources :users
+
   resources :wires do
     resources :interests
   end
