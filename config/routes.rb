@@ -1,5 +1,8 @@
 Twominbreak::Application.routes.draw do
-  resources :wires
+  resources :wires do
+    resources :interests
+  end
+  
 
   root "welcome#index"
 

@@ -1,14 +1,40 @@
 <p>
-	<strong>Title:</strong>
-	<%= @wire.title %>
+  <strong>Title:</strong>
+  <%= @wire.title %>
 </p>
-
+ 
 <p>
-
-</p>
-	<strong>Frequency:</strong>
-	<%= @wire.frequency %>
+  <strong>Frequency:</strong>
+  <%= @wire.frequency %>
 </p>
 
+<h2>Interests</h2>
+<% @wire.interests.each do |interest| %>
+  <p>
+    <strong>Interest:</strong>
+    <%= interest.topic %>
+  </p>
+
+  <p>
+  <%= link_to 'Destroy Interest', [interest.wire, interest],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+  </p>
+ 
+<% end %>
+
+ 
+<h2>Add an interest:</h2>
+<%= form_for([@wire, @wire.interests.build]) do |f| %>
+  <p>
+    <%= f.label :topic %><br />
+    <%= f.text_field :topic %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+ 
 <%= link_to 'Back', wires_path %>
 | <%= link_to 'Edit', edit_wire_path(@wire) %>
