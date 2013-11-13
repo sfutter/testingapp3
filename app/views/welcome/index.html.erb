@@ -1,7 +1,20 @@
-<h1>Welcome to two min break</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
-<p>ABOUT</p>
-
+<h1>Welcome to Two Minute Break!</h1>
 
 <h1>Hello!</h1>
-<%= link_to "my two minute breaks", controller: "wires" %>
+
+
+<ul>
+<% @reddit_stories.each do |story| %>
+
+	<li>
+	<%= story %>
+	</li>
+
+</ul>
+<% end %>
+
+
+<p>ABOUT</p>
+<%= link_to "my two minute breaks", controller: "wires" %> | 
+<%= link_to 'New wire', new_wire_path %> 
+

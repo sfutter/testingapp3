@@ -9,7 +9,8 @@ class WiresController < ApplicationController
 	end
 
 	def create
-		@wire= Wire.new(params[:wire].permit(:title, :frequency))
+		@wire= Wire.new(wire_params)
+		@wire.user = current_user
 
 		if @wire.save
 			redirect_to @wire
@@ -43,6 +44,8 @@ class WiresController < ApplicationController
 	 
 	  redirect_to wires_path
 	end
+
+
 
 	private
 		def wire_params
