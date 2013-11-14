@@ -13,28 +13,26 @@ class UserMailer < ActionMailer::Base
 
 
   def interest_email(user)
-  	#@user = user
   	@user = user
-  	@url = "go fuck yourselves"
+
+    result = get_from_reddit('funny')
+    @reddit_stories = result['data']['children'].inject(Array.new) do |stories, story|
+    stories << { 
+      title: story['data']['title'],
+      url: story['data']['url'], 
+      score: story['data']['score'] 
+      }
+    #@reddit_stories.sort_by { |hash| hash[:score].to_i }.reverse![0..3]
+    end
+
+
+  	@url = "http://twominutebreak.me"
   	mail(to: 'futter.steven@gmail.com', subject: "Stories matching #{@interest}") do |format|
   	format.html { render 'interest_email'}
   	end
+
   end
 
-
-
-  def index
-	result = get_from_reddit('funny')
-  	@reddit_stories = result['data']['children'].inject(Array.new) do |stories, story|
-		stories << { 
-			title: story['data']['title'],
-			url: story['data']['url'], 
-			score: story['data']['score'] 
-			}
-	@body[:reddit_stories] #reddit_stories.sort_by { |hash| hash[:score].to_i }.reverse![0..3]
-
-		end
-  end
 
 
 private 

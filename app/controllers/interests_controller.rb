@@ -1,5 +1,6 @@
 class InterestsController < ApplicationController
 	def create
+		@user = current_user
 		@wire = Wire.find(params[:wire_id])
 		@interest = @wire.interests.create(params[:interest].permit(:topic))
 		
