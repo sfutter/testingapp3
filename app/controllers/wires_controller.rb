@@ -19,7 +19,6 @@ class WiresController < ApplicationController
 		end
 	end
 
-
 	def show
 		@wire = Wire.find(params[:id])
 	end

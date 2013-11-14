@@ -2,7 +2,14 @@ class InterestsController < ApplicationController
 	def create
 		@wire = Wire.find(params[:wire_id])
 		@interest = @wire.interests.create(params[:interest].permit(:topic))
+		
+		if @interest.save
+			#UserMailer.welcome_email(@user).deliver
+			UserMailer.interest_email(@user).deliver
+		end
+  	
 		redirect_to wire_path(@wire)
+
 	end
 
 	def destroy
@@ -13,3 +20,5 @@ class InterestsController < ApplicationController
   end
 
 end
+
+
