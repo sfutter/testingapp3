@@ -14,7 +14,9 @@ class UserMailer < ActionMailer::Base
 
   def interest_email(user)
   	@user = user
-
+    #@wire = Wire.find(params[:wire_id])
+    #@interest = @wire.interests.create(params[:interest].permit(:topic))
+    #category = 'funny'
     result = get_from_reddit('funny')
     @reddit_stories = result['data']['children'].inject(Array.new) do |stories, story|
     stories << { 

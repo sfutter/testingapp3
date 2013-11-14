@@ -20,6 +20,8 @@ class InterestsController < ApplicationController
     redirect_to wire_path(@wire)
   end
 
+  
+
 end
 
 
