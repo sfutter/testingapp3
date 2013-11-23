@@ -4,14 +4,19 @@
 
 
 <ul>
+
+
+ <!-- @reddit_stories.each do |story|  -->
+
 <% @reddit_stories.each do |story| %>
+	
+		<li>
+			<%= story[:title] %> | <%= link_to story[:url], story[:url] %> | <%= story[:score] %> 
+		</li>
 
-	<li>
-	<%= story %>
-	</li>
-
-</ul>
 <% end %>
+
+
 
 
 <p>ABOUT</p>

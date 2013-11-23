@@ -2,17 +2,26 @@ class WelcomeController < ApplicationController
   #@subreddit = 'funny'
 
   def index
+  	
 	result = get_from_reddit('funny')
+	# result['data']['children'].each do |story|
+	# 	stories << {
+	# 		title: story['data']['title']
+	# 	}
+
+
   	@reddit_stories = result['data']['children'].inject(Array.new) do |stories, story|
 		stories << { 
 			title: story['data']['title'],
 			url: story['data']['url'], 
 			score: story['data']['score'] 
 			}
-	#reddit_stories.sort_by { |hash| hash[:score].to_i }.reverse![0..3]
-
+		stories.sort_by { |hsh| hsh[:score] }.reverse![0..2]
 		end
   end
+
+
+
 
 
 private 

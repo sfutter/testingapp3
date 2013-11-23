@@ -6,7 +6,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     #email_with_name = "#{@user.name} <#{@user.email}>"
     #@url  = 'http://example.com/login'
-    mail(to: 'futter.steven@gmail.com', subject: 'Welcome to My Awesome Site') do |format|
+    mail(to: @user.email, subject: 'Welcome to My Awesome Site') do |format|
     format.html { render 'welcome_email' }
 	end
   end
@@ -14,22 +14,23 @@ class UserMailer < ActionMailer::Base
 
   def interest_email(user)
   	@user = user
+    @interest = @user.wires.first.interests.last
     #@wire = Wire.find(params[:wire_id])
     #@interest = @wire.interests.create(params[:interest].permit(:topic))
     #category = 'funny'
-    result = get_from_reddit('funny')
+    result = get_from_reddit(@interest.topic)
     @reddit_stories = result['data']['children'].inject(Array.new) do |stories, story|
     stories << { 
       title: story['data']['title'],
       url: story['data']['url'], 
       score: story['data']['score'] 
       }
-    #@reddit_stories.sort_by { |hash| hash[:score].to_i }.reverse![0..3]
+    stories.sort_by { |hsh| hsh[:score] }.reverse![0..2]
     end
 
 
   	@url = "http://twominutebreak.me"
-  	mail(to: 'futter.steven@gmail.com', subject: "Stories matching #{@interest}") do |format|
+  	mail(to: @user[:email], subject: "Stories matching #{@interest}") do |format|
   	format.html { render 'interest_email'}
   	end
 

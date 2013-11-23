@@ -6,6 +6,8 @@ class InterestsController < ApplicationController
 		
 		if @interest.save
 			#UserMailer.welcome_email(@user).deliver
+			
+			# for now don't send the email  ** UNCOMMENT AFTERWARDs ###
 			UserMailer.interest_email(@user).deliver
 		end
   	

@@ -4,12 +4,21 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= @user %> !</h1>
+    <h1><%= @user[:name] %> !</h1>
     
    <p>Reddit Stories of interest: </p>
-    <%= @url %>
-    <%= @reddit_stories %>
+
+
+
+      <% @reddit_stories.each do |story| %>
+          <li>
+            <%= story[:title] %> | <%= link_to story[:url], story[:url] %> | <%= story[:score] %> 
+          </li>
+      <% end %>
+    
+
 
     <p>Adjust your preference 'here'.</p>
   </body>
 </html>
+
