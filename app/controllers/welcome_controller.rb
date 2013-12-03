@@ -10,6 +10,7 @@ class WelcomeController < ApplicationController
 	# 	}
 
 
+  # Nice, easy-to-read implementation of parsing the Reddit API
   	@reddit_stories = result['data']['children'].inject(Array.new) do |stories, story|
 		stories << { 
 			title: story['data']['title'],
@@ -30,6 +31,7 @@ private
 		response = RestClient.get(endpoint_url)
 		parsed_response = JSON.parse(response)
 	end #this goes in the model 	
+  # I agree! "Skinny controllers, fat models" is the mantra!
 end
 
 
