@@ -11,9 +11,16 @@
     </ul>
   </div>
   <% end %>
+  
+  <div class="center">
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :category %><br>
+    <%= f.select :category, options_for_select(%w[Funny Pics ]) %>
   </p>
  
   <p>
@@ -25,5 +32,6 @@
     <%= f.submit %>
   </p>
 <% end %>
+</div>
  
 <%= link_to 'Back', wires_path %> 

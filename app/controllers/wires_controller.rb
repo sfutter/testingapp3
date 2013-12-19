@@ -30,7 +30,7 @@ class WiresController < ApplicationController
 	def update
 	  @wire = Wire.find(params[:id])
 	 
-	  if @wire.update(params[:wire].permit(:title, :frequency))
+	  if @wire.update(params[:wire].permit(:title, :category, :frequency))
 	    redirect_to @wire
 	  else
 	    render 'edit'
@@ -48,6 +48,6 @@ class WiresController < ApplicationController
 
 	private
 		def wire_params
-			params.require(:wire).permit(:title, :frequency)
+			params.require(:wire).permit(:title, :category, :frequency)
 		end
 end

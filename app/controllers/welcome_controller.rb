@@ -4,11 +4,6 @@ class WelcomeController < ApplicationController
   def index
   	
 	result = get_from_reddit('funny')
-	# result['data']['children'].each do |story|
-	# 	stories << {
-	# 		title: story['data']['title']
-	# 	}
-
 
   	@reddit_stories = result['data']['children'].inject(Array.new) do |stories, story|
 		stories << { 
@@ -16,12 +11,9 @@ class WelcomeController < ApplicationController
 			url: story['data']['url'], 
 			score: story['data']['score'] 
 			}
-		stories.sort_by { |hsh| hsh[:score] }.reverse![0..2]
+		stories.sort_by { |hsh| hsh[:score] }.reverse![0..0]
 		end
   end
-
-
-
 
 
 private 

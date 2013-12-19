@@ -3,15 +3,18 @@
 <table>
   <tr>
     <th>Title</th>
+    <th>Category</th>
     <th>Frequency</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
  
+  <div class="center">
   <% @wires.each do |wire| %>
     <tr>
       <td><%= wire.title %></td>
+      <td><%= wire.category %></td>
       <td><%= wire.frequency %></td>
       <td><%= link_to 'Show', wire %></td>
       <td><%= link_to 'Edit', edit_wire_path(wire) %></td>
@@ -19,6 +22,8 @@
                     method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
+  </div>
+  
 </table>
 
 <%= link_to 'New wire', new_wire_path %> 
