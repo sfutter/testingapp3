@@ -1,3 +1,8 @@
+<% =begin %>
+Use a partial to clean up the duplication between index, edit, and show.
+http://guides.rubyonrails.org/layouts_and_rendering.html
+<% =end %>
+
 <h1>Editing wire</h1>
  
 <%= form_for :wire, url: wire_path(@wire), method: :patch do |f| %>

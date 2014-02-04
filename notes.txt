@@ -1,0 +1,5 @@
+- Not sure if you put this on Heroku yet. If so, please send me the link!
+
+- Nice work getting Devise up and running. Works well locally.
+
+

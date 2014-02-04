@@ -9,7 +9,8 @@ class InterestsController < ApplicationController
 			# for now don't send the email  ** UNCOMMENT AFTERWARDs ###
 			UserMailer.interest_email(@user).deliver
 		end
-  	
+    # Need to do something here if `!@interest.save`. Usually the page is 
+    # rendered again with the errors that occurred trying to save the @interest.
 		redirect_to wire_path(@wire)
 
 	end

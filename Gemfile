@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 
 #QUESTION 2: do these go here?
+# Yes, they do! You can make an argument that 'pry' is only used in test and
+# development, but it's fine to keep them all here. Outside of a `group`, 
+# Rails assumes that these gems are available in test, dev, and prod.
 gem 'pry'
 gem 'rest-client'
 gem 'json'
